@@ -11,8 +11,8 @@ public class ConexionBD {
     
     // Parametros de la conexion
     String url= "jdbc:mysql://localhost:3306/restaurantebd";  // URl de la BD
-    String user="admin"; // Usuario con el que nos conectaremos
-    String pass="prograclientegrupo8"; // contraseña del usuario
+    String user= "root"; // Usuario con el que nos conectaremos
+    String pass=""; // contraseña del usuario
 
     //Construimos los metodos para la conexion
     public void setConsulta(String sql) {
