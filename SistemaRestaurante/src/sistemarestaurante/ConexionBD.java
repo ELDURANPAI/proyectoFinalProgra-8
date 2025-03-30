@@ -10,7 +10,7 @@ public class ConexionBD {
     ResultSet resultado = null;
     
     // Parametros de la conexion
-    String url= "jdbc:mysql://192.168.100.3:3306/restaurantebd";  // URl de la BD
+    String url= "jdbc:mysql://190.113.103.121:3306/restaurantebd";  // URl de la BD
     String user="admin"; // Usuario con el que nos conectaremos
     String pass="prograclientegrupo8"; // contraseña del usuario
 
