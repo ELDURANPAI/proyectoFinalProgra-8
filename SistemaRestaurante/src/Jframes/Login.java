@@ -106,6 +106,9 @@ public class Login extends javax.swing.JFrame {
         } else { // si no encuentra la clave y usuario
             JOptionPane.showMessageDialog(null, "USUARIO/CONTRASEÑA INVALIDOS. ", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        // Vacio los campos de texto
+        txtUsuario.setText("");
+        txtClave.setText("");
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**

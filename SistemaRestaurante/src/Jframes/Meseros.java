@@ -5,6 +5,7 @@
 package Jframes;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sistemarestaurante.*;
 
@@ -29,11 +30,11 @@ public class Meseros extends javax.swing.JFrame {
             resultado = conexion.getResultado();
             while (resultado.next()) {
                 int id = resultado.getInt("ID");
-                String nombre = resultado.getString("NOMBRE");
-                String cedula = resultado.getString("CEDULA");
+                String nombre = resultado.getString("nombre");
+                String cedula = resultado.getString("cedula");
 
-                md.addRow(new Object[]{resultado.getInt("id"),
-                    resultado.getInt("id"),
+                md.addRow(new Object[]{
+                    resultado.getInt("ID"),
                     resultado.getString("nombre"),
                     resultado.getString("cedula")});
                 tablaLista.setModel(md);
@@ -130,7 +131,7 @@ public class Meseros extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 210, 30));
 
         btnSalir.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnSalir.setText("SALIR");
+        btnSalir.setText("VOLVER");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -184,7 +185,10 @@ public class Meseros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0); // Cierra el programa sin retornar error.
+        Menu m = new Menu();
+        this.setVisible(false);
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -192,12 +196,27 @@ public class Meseros extends javax.swing.JFrame {
         String cedula = txtCedula.getText(); // guardamos la cedula
         c.AgregarMesero(nombre, cedula);
         ConsultarMeseros();// actualiza la lista
+        // Vaciamos los cuadros de texto
+        txtNombre.setText("");
+        txtCedula.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = Integer.parseInt(txtIdEliminar.getText());// guardamos la ID
-        c.EliminarMesero(id);// eliminamos los datos de la BD
-        ConsultarMeseros();// actualiza la lista
+        String idTexto = txtIdEliminar.getText().trim(); // Obtener texto sin espacios
+
+        if (idTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo ID está vacío. Por favor, ingrese un ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método sin intentar eliminar
+        }
+
+        try {
+            int id = Integer.parseInt(idTexto); // Intentar convertir a entero
+            c.EliminarMesero(id); // Llamar a la función para eliminar
+            ConsultarMeseros(); // Actualizar lista
+            txtIdEliminar.setText(""); // Vaciar el campo de texto
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
