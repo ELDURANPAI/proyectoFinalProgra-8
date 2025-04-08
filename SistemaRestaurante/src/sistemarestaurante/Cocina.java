@@ -74,7 +74,7 @@ public class Cocina {
             if (contadorPlatillos < platillos.length) {
                 platillos[contadorPlatillos] = platillo;
                 contadorPlatillos++;
-                JOptionPane.showMessageDialog(null, "Platillo agregado: " + platillo);
+                JOptionPane.showMessageDialog(null, "Platillo agregado correctamente: " + platillo);
             } else {
                 JOptionPane.showMessageDialog(null, "No hay espacio para platillos. ");
             }
