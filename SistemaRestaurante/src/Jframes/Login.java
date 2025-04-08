@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtClave = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de Sesion");
@@ -49,16 +50,23 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Titulo.setBackground(new java.awt.Color(255, 255, 255));
         Titulo.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("INICIO DE SESIÓN");
         jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
+        usuarioLabel.setBackground(new java.awt.Color(255, 255, 255));
         usuarioLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        usuarioLabel.setForeground(new java.awt.Color(255, 255, 255));
         usuarioLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usuarioLabel.setText("USUARIO");
         jPanel1.add(usuarioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 430, -1));
 
+        contraseniaLabel.setBackground(new java.awt.Color(255, 255, 255));
         contraseniaLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        contraseniaLabel.setForeground(new java.awt.Color(255, 255, 255));
         contraseniaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         contraseniaLabel.setText("CONTRASEÑA");
         jPanel1.add(contraseniaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 430, -1));
@@ -79,6 +87,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 250, 50));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/icono2.jpg"))); // NOI18N
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +161,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel contraseniaLabel;
+    private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtUsuario;

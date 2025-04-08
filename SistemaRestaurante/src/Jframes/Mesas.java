@@ -44,6 +44,7 @@ public class Mesas extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setLabelFor(this);
@@ -226,8 +227,9 @@ public class Mesas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       Meseros abrir = new  Meseros();
+       Menu abrir = new  Menu();
        abrir.setVisible(true);
+       abrir.setLocationRelativeTo(null);
        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
