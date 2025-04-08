@@ -1,5 +1,7 @@
 package sistemarestaurante;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -47,31 +49,37 @@ public class Cocina {
         this.contadorPlatillos = contadorPlatillos;
     }
     
-       public void agregarVaso(String vaso) {
-        if (vaso != null && !vaso.equals("")) {
+ public void agregarVaso() {
+    try {
+        String input = JOptionPane.showInputDialog("Ingresa un número de vaso:");
+        if (input != null && !input.equals("")) {
+            int vaso = Integer.parseInt(input);
             if (contadorVasos < vasos.length) {
-                vasos[contadorVasos] = vaso;
+                vasos[contadorVasos] = String.valueOf(vaso);
                 contadorVasos++;
-                System.out.println("Vaso agregado: " + vaso);
+                JOptionPane.showMessageDialog(null, "Vaso agregado correctamente: " + vaso);
             } else {
-                System.out.println("No hay espacio para vasos ");
+                JOptionPane.showMessageDialog(null, "No hay espacio para vasos.");
             }
         } else {
-            System.out.println("No se puede agregar un vaso ");
+            JOptionPane.showMessageDialog(null, "No se puede agregar un vaso.");
         }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "ingrese un número valido.");
     }
-
-    public void agregarPlatillo(String platillo) {
+ }
+    public void agregarPlatillo() {
+        String platillo = JOptionPane.showInputDialog("Ingresa el nombre del platillo:");
         if (platillo != null && !platillo.equals("")) {
             if (contadorPlatillos < platillos.length) {
                 platillos[contadorPlatillos] = platillo;
                 contadorPlatillos++;
-                System.out.println("Platillo agregado: " + platillo);
+                JOptionPane.showMessageDialog(null, "Platillo agregado: " + platillo);
             } else {
-                System.out.println("No hay espacio para platillo ");
+                JOptionPane.showMessageDialog(null, "No hay espacio para platillos. ");
             }
         } else {
-            System.out.println("No se puede agregar un platillo ");
+            JOptionPane.showMessageDialog(null, "No se puede agregar un platillo. ");
         }
     }
 
