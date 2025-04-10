@@ -13,10 +13,9 @@ import javax.swing.JOptionPane;
  */
 public abstract class Cocina {
     private String[] vasos = new String[10];
-    private String[] platillos = new String[10];
+    private Menu[] platillos = new Menu[10];
     private int contadorVasos = 0;
     private int contadorPlatillos = 0;
-
    
     public String[] getVasos() {
         return vasos;
@@ -24,14 +23,6 @@ public abstract class Cocina {
 
     public void setVasos(String[] vasos) {
         this.vasos = vasos;
-    }
-
-    public String[] getPlatillos() {
-        return platillos;
-    }
-
-    public void setPlatillos(String[] platillos) {
-        this.platillos = platillos;
     }
 
     public int getContadorVasos() {
@@ -49,47 +40,65 @@ public abstract class Cocina {
     public void setContadorPlatillos(int contadorPlatillos) {
         this.contadorPlatillos = contadorPlatillos;
     }
-    
+   
     public void agregarVaso() {
-    try {
-        String input = JOptionPane.showInputDialog("Ingresa un número de vaso:");
-        if (input != null && !input.equals("")) {
-            int vaso = Integer.parseInt(input);
-            if (contadorVasos < vasos.length) {
-                vasos[contadorVasos] = String.valueOf(vaso);
-                contadorVasos++;
-                JOptionPane.showMessageDialog(null, "Vaso agregado correctamente: " + vaso);
+        try {
+            String input = JOptionPane.showInputDialog("Ingresa un numero de vaso:");
+            if (input != null && !input.equals("")) {
+                int vaso = Integer.parseInt(input);
+                if (contadorVasos < vasos.length) {
+                    vasos[contadorVasos] = String.valueOf(vaso);
+                    contadorVasos++;
+                    JOptionPane.showMessageDialog(null, "Vaso agregado correctamente: " + vaso);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay espacio para vasos.");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No hay espacio para vasos.");
+                JOptionPane.showMessageDialog(null, "No se puede agregar un vaso.");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede agregar un vaso.");
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "ingrese un número valido.");
-    }
- }
-    public void agregarPlatillo() {
-        String platillo = JOptionPane.showInputDialog("Ingresa el nombre del platillo:");
-        if (platillo != null && !platillo.equals("")) {
-            if (contadorPlatillos < platillos.length) {
-                platillos[contadorPlatillos] = platillo;
-                contadorPlatillos++;
-                JOptionPane.showMessageDialog(null, "Platillo agregado correctamente: " + platillo);
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay espacio para platillos. ");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede agregar un platillo. ");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un número valido.");
         }
     }
 
-    @Override
-    public String toString() {
-        return super.toString()
-                + "\nNumero de vasos: " + vasos
-                + "\nNumero de Platillos: " + platillos;
+    public void agregarPlatilloDesdeMenu() {
+        if (contadorPlatillos < platillos.length) {
+            String bebida = JOptionPane.showInputDialog("Ingrese el nombre de la bebida: ");
+            String platillo = JOptionPane.showInputDialog("Ingrese el nombre del platillo: ");
+            String tipo = JOptionPane.showInputDialog("Ingrese el tipo de platillo: ");
+            String precioS = JOptionPane.showInputDialog("Ingrese el precio del platillo: ");
+            try {
+                double precio = Double.parseDouble(precioS);
+                Menu nuevoMenu = new implementarMenu(bebida, platillo, tipo, precio);
+                platillos[contadorPlatillos] = nuevoMenu;
+                contadorPlatillos++;
+                JOptionPane.showMessageDialog(null, "Platillo agregado exitosamente:\n" + nuevoMenu);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Precio no valido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay espacio para platillos.");
+        }
     }
     
+    public String toString() {
+    String resultado = "Resumen de la Cocina:\n";
+    resultado += "Numero de vasos agregados: " + contadorVasos + "\n";
+    resultado += "Lista de vasos: ";
+    for (int i = 0; i < contadorVasos; i++) {
+        resultado += vasos[i];
+        if (i < contadorVasos - 1) {
+            resultado += ", ";
+        }
+    }
+    resultado += "\n\nNumero de platillos agregados: " + contadorPlatillos + "\n";
+    resultado += "Lista de platillos:\n";
+
+    for (int i = 0; i < contadorPlatillos; i++) {
+        resultado += (i + 1) + ") " + platillos[i].toString() + "\n";
+    }
+    return resultado;
+}
+  
 }
 
