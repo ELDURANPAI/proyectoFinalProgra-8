@@ -15,7 +15,7 @@ public class Contratar {
             //Abrir conexion
             conexion.setConexion();
             //definimos la consulta
-            conexion.setConsulta("INSERT INTO meseros(nombre, cedula) VALUES (?,?)");
+            conexion.setConsulta("INSERT INTO meseros(nombre, cedula) VALUES (?,?)"); // entra en la tabla BD
             conexion.getConsulta().setString(1, nombre);// ingresamos el nombre
             conexion.getConsulta().setString(2, cedula);// ingresamos la cedula
 

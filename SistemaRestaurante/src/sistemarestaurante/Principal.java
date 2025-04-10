@@ -13,12 +13,6 @@ public class Principal {
         Login l = new Login();
         l.setVisible(true);
         l.setLocationRelativeTo(null);
-
-        /*Frame de meseros
-        Meseros m = new Meseros();
-        m.setVisible(true);
-        m.setLocationRelativeTo(null);
-         */
     }
 
 }
