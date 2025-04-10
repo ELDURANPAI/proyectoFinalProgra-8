@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
  *
  * @author Harry Orozco
  */
-public class Cocina {
+public abstract class Cocina {
     private String[] vasos = new String[10];
     private String[] platillos = new String[10];
     private int contadorVasos = 0;
     private int contadorPlatillos = 0;
 
+   
     public String[] getVasos() {
         return vasos;
     }
@@ -49,7 +50,7 @@ public class Cocina {
         this.contadorPlatillos = contadorPlatillos;
     }
     
- public void agregarVaso() {
+    public void agregarVaso() {
     try {
         String input = JOptionPane.showInputDialog("Ingresa un número de vaso:");
         if (input != null && !input.equals("")) {
@@ -91,3 +92,4 @@ public class Cocina {
     }
     
 }
+
