@@ -31,6 +31,9 @@ public class Menu extends javax.swing.JFrame {
         btnMesas = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        btnMesas1 = new javax.swing.JButton();
+        btnMesas2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu de Opciones");
@@ -65,7 +68,26 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 310, 40));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/icono1.jpg"))); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 960, 580));
+
+        btnMesas1.setText("Mesas");
+        btnMesas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesas1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMesas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 310, 40));
+
+        btnMesas2.setText("Mesas");
+        btnMesas2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesas2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMesas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 310, 40));
+
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 370, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +127,14 @@ public class Menu extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnMesas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesas1ActionPerformed
+
+    private void btnMesas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesas2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesas2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,8 +173,11 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnMesas;
+    private javax.swing.JButton btnMesas1;
+    private javax.swing.JButton btnMesas2;
     private javax.swing.JButton btnMeseros;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
