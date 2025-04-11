@@ -10,7 +10,7 @@ import sistemarestaurante.*;
 
 /**
  *
- * @author DURAN y harry
+ * @author DURAN y harry Prueba
  */
 public class Login extends javax.swing.JFrame {
 
