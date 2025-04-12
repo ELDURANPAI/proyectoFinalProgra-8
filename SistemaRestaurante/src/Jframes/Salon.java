@@ -4,9 +4,15 @@
  */
 package Jframes;
 
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import sistemarestaurante.ConexionBD;
+import java.sql.SQLException;
+
+
 /**
  *
- * @author plast
+ * @author plast Prueba
  */
 public class Salon extends javax.swing.JFrame {
 
@@ -75,42 +81,92 @@ public class Salon extends javax.swing.JFrame {
 
         btnMesa3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa3.setText("Mesa 3");
+        btnMesa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa3ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa3);
 
         btnMesa4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa4.setText("Mesa 4");
+        btnMesa4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa4ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa4);
 
         btnMesa5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa5.setText("Mesa 5");
+        btnMesa5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa5ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa5);
 
         btnMesa6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa6.setText("Mesa 6");
+        btnMesa6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa6ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa6);
 
         btnMesa7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa7.setText("Mesa 7");
+        btnMesa7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa7ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa7);
 
         btnMesa8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa8.setText("Mesa 8");
+        btnMesa8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa8ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa8);
 
         btnMesa9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa9.setText("Mesa 9");
+        btnMesa9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa9ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa9);
 
         btnMesa10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa10.setText("Mesa 10");
+        btnMesa10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa10ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa10);
 
         btnMesa11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa11.setText("Mesa 11");
+        btnMesa11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa11ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa11);
 
         btnMesa12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMesa12.setText("Mesa 12");
+        btnMesa12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa12ActionPerformed(evt);
+            }
+        });
         JPanelBotones.add(btnMesa12);
 
         JPanelPrincipal.add(JPanelBotones);
@@ -123,6 +179,11 @@ public class Salon extends javax.swing.JFrame {
 
         btnVolver.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         JPanelPrincipal.add(btnVolver);
         btnVolver.setBounds(340, 460, 250, 60);
 
@@ -148,13 +209,113 @@ public class Salon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
-        // TODO add your handlingasdasd code here:
+        mostrarInformacionMesa("1");
     }//GEN-LAST:event_btnMesa1ActionPerformed
 
     private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
-        // TODO add your handling code here:
+        mostrarInformacionMesa("2");
     }//GEN-LAST:event_btnMesa2ActionPerformed
 
+    private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
+         mostrarInformacionMesa("3");
+    }//GEN-LAST:event_btnMesa3ActionPerformed
+
+    private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
+         mostrarInformacionMesa("4");
+    }//GEN-LAST:event_btnMesa4ActionPerformed
+
+    private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
+         mostrarInformacionMesa("5");
+    }//GEN-LAST:event_btnMesa5ActionPerformed
+
+    private void btnMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa6ActionPerformed
+         mostrarInformacionMesa("6");
+    }//GEN-LAST:event_btnMesa6ActionPerformed
+
+    private void btnMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa7ActionPerformed
+         mostrarInformacionMesa("7");
+    }//GEN-LAST:event_btnMesa7ActionPerformed
+
+    private void btnMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa8ActionPerformed
+         mostrarInformacionMesa("8");
+    }//GEN-LAST:event_btnMesa8ActionPerformed
+
+    private void btnMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa9ActionPerformed
+         mostrarInformacionMesa("9");
+    }//GEN-LAST:event_btnMesa9ActionPerformed
+
+    private void btnMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa10ActionPerformed
+         mostrarInformacionMesa("10");
+    }//GEN-LAST:event_btnMesa10ActionPerformed
+
+    private void btnMesa11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa11ActionPerformed
+         mostrarInformacionMesa("11");
+    }//GEN-LAST:event_btnMesa11ActionPerformed
+
+    private void btnMesa12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa12ActionPerformed
+         mostrarInformacionMesa("12");
+    }//GEN-LAST:event_btnMesa12ActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Mesas volverMesas = new Mesas();
+        volverMesas.setVisible(true);
+        volverMesas.setLocationRelativeTo(null);
+        this.dispose(); // Cierra la ventana actual de Salón               
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void mostrarInformacionMesa(String numeroMesa) {
+        String nombreSalonero = obtenerNombreSalonero(numeroMesa);
+        double cuentaPendiente = obtenerCuenta(numeroMesa); // temporal
+
+        if (cuentaPendiente > 0) {
+            JOptionPane.showMessageDialog(this,
+                "Mesa " + numeroMesa +
+                "\nSalonero encargado: " + nombreSalonero +
+                "\nCuenta pendiente: ₡" + cuentaPendiente,
+                "Información de la Mesa",
+                JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "La Mesa " + numeroMesa + " no tiene facturas pendientes.",
+                "Sin cuenta pendiente",
+                JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    private String obtenerNombreSalonero(String numeroMesa) {
+        String nombre = "No asignado"; 
+        ConexionBD conexion = new ConexionBD();
+        ResultSet resultado = null;
+
+        try {
+            conexion.setConexion();
+            conexion.setConsulta("SELECT Nombre FROM mesas WHERE NumMesa = ?");
+            conexion.getConsulta().setString(1, numeroMesa);
+            resultado = conexion.getResultado();
+
+            if (resultado.next()) {
+                nombre = resultado.getString("nombre");
+            }
+
+            conexion.cerrarConexion();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return nombre;
+    }
+    
+    private double obtenerCuenta(String numeroMesa) {
+        // Simulación temporal: supongamos que si la mesa es impar tiene cuenta
+        int num = Integer.parseInt(numeroMesa);
+
+        if (num % 2 == 0) {
+            return 0.0; // mesa par: sin cuenta pendiente
+        } else {
+            return 15250.75; // mesa impar: cuenta pendiente simulada
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
