@@ -3,7 +3,7 @@ package sistemarestaurante;
 import java.sql.*;
 import javax.swing.*;
 
-public class Contratar {
+public class Contratar extends Cocina {
 
     ConexionBD conexion = new ConexionBD();
     ResultSet resultado = null;

@@ -95,10 +95,47 @@ public class AgregarMenu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al guardar en base de datos: " + e.getMessage());
     }
 }
+    public String toString() {
+        DefaultTableModel modelo = (DefaultTableModel) platillos1.getModel();
+        int filas = modelo.getRowCount();
+        String resultado = "Factura:\n";
+        int contadorVasos = 0;
+        resultado += "Numero de vasos agregados: ";
+        for (int i = 0; i < filas; i++) {
+            try {
+                int vasos = Integer.parseInt(String.valueOf(modelo.getValueAt(i, 2)));
+                contadorVasos += vasos;
+            } catch (NumberFormatException e) {
+            }
+        }
+        resultado += contadorVasos + "\n";
+        resultado += "Lista de vasos: ";
+        for (int i = 0; i < filas; i++) {
+            String vasosS = String.valueOf(modelo.getValueAt(i, 2));
+            resultado += vasosS;
+            if (i < filas - 1) {
+                resultado += ", ";
+            }
+        }
+        resultado += "\n\nNumero de platillos agregados: " + filas + "\n";
+        resultado += "Lista de platillos:\n";
+        for (int i = 0; i < filas; i++) {
+            String nombre = String.valueOf(modelo.getValueAt(i, 0));
+            String tipo = String.valueOf(modelo.getValueAt(i, 1));
+            String precio = String.valueOf(modelo.getValueAt(i, 3));
+            resultado += (i + 1) + ") ";
+            resultado += "Nombre: " + nombre + "";
+            resultado += "Tipo: " + tipo + "";
+            resultado += "Precio: " + precio + "\n";
+        }
+
+        return resultado;
+    }
     
     public AgregarMenu() {
         initComponents();
         ConsultarPlatillos();
+        
     }
 
     /**
@@ -238,6 +275,7 @@ public class AgregarMenu extends javax.swing.JFrame {
     private void btnGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDatosActionPerformed
         eliminarDatos();
         agregarDatos();
+        JOptionPane.showMessageDialog(null, toString(), "Factura", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnGuardarDatosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
