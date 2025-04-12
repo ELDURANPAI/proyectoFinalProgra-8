@@ -26,48 +26,134 @@ public class Salon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        JPanelPrincipal = new javax.swing.JPanel();
+        JPanelBotones = new javax.swing.JPanel();
+        btnMesa1 = new javax.swing.JButton();
+        btnMesa2 = new javax.swing.JButton();
+        btnMesa3 = new javax.swing.JButton();
+        btnMesa4 = new javax.swing.JButton();
+        btnMesa5 = new javax.swing.JButton();
+        btnMesa6 = new javax.swing.JButton();
+        btnMesa7 = new javax.swing.JButton();
+        btnMesa8 = new javax.swing.JButton();
+        btnMesa9 = new javax.swing.JButton();
+        btnMesa10 = new javax.swing.JButton();
+        btnMesa11 = new javax.swing.JButton();
+        btnMesa12 = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
         imagenDeFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(960, 580));
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(960, 580));
-        jPanel1.setMinimumSize(new java.awt.Dimension(960, 580));
-        jPanel1.setPreferredSize(new java.awt.Dimension(960, 580));
-        jPanel1.setLayout(null);
+        JPanelPrincipal.setMaximumSize(new java.awt.Dimension(960, 580));
+        JPanelPrincipal.setMinimumSize(new java.awt.Dimension(960, 580));
+        JPanelPrincipal.setPreferredSize(new java.awt.Dimension(960, 580));
+        JPanelPrincipal.setLayout(null);
+
+        JPanelBotones.setOpaque(false);
+        JPanelBotones.setLayout(new java.awt.GridLayout(3, 3, 10, 10));
+
+        btnMesa1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa1.setText("Mesa 1");
+        btnMesa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa1ActionPerformed(evt);
+            }
+        });
+        JPanelBotones.add(btnMesa1);
+
+        btnMesa2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa2.setText("Mesa 2");
+        btnMesa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa2ActionPerformed(evt);
+            }
+        });
+        JPanelBotones.add(btnMesa2);
+
+        btnMesa3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa3.setText("Mesa 3");
+        JPanelBotones.add(btnMesa3);
+
+        btnMesa4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa4.setText("Mesa 4");
+        JPanelBotones.add(btnMesa4);
+
+        btnMesa5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa5.setText("Mesa 5");
+        JPanelBotones.add(btnMesa5);
+
+        btnMesa6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa6.setText("Mesa 6");
+        JPanelBotones.add(btnMesa6);
+
+        btnMesa7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa7.setText("Mesa 7");
+        JPanelBotones.add(btnMesa7);
+
+        btnMesa8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa8.setText("Mesa 8");
+        JPanelBotones.add(btnMesa8);
+
+        btnMesa9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa9.setText("Mesa 9");
+        JPanelBotones.add(btnMesa9);
+
+        btnMesa10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa10.setText("Mesa 10");
+        JPanelBotones.add(btnMesa10);
+
+        btnMesa11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa11.setText("Mesa 11");
+        JPanelBotones.add(btnMesa11);
+
+        btnMesa12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnMesa12.setText("Mesa 12");
+        JPanelBotones.add(btnMesa12);
+
+        JPanelPrincipal.add(JPanelBotones);
+        JPanelBotones.setBounds(70, 90, 790, 350);
 
         titulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        titulo.setText("Titulo");
-        jPanel1.add(titulo);
-        titulo.setBounds(0, 0, 96, 47);
+        titulo.setText("Salon (Mesas del Restaurante)");
+        JPanelPrincipal.add(titulo);
+        titulo.setBounds(20, 20, 520, 47);
+
+        btnVolver.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnVolver.setText("Volver");
+        JPanelPrincipal.add(btnVolver);
+        btnVolver.setBounds(340, 460, 250, 60);
 
         imagenDeFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/icono3.jpg"))); // NOI18N
         imagenDeFondo.setMaximumSize(new java.awt.Dimension(960, 580));
         imagenDeFondo.setMinimumSize(new java.awt.Dimension(960, 580));
         imagenDeFondo.setPreferredSize(new java.awt.Dimension(960, 580));
-        jPanel1.add(imagenDeFondo);
+        JPanelPrincipal.add(imagenDeFondo);
         imagenDeFondo.setBounds(0, 0, 960, 580);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(JPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 944, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+            .addComponent(JPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 541, Short.MAX_VALUE)
         );
 
         setBounds(0, 0, 960, 580);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
+        // TODO add your handlingasdasd code here:
+    }//GEN-LAST:event_btnMesa1ActionPerformed
+
+    private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,8 +191,22 @@ public class Salon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanelBotones;
+    private javax.swing.JPanel JPanelPrincipal;
+    private javax.swing.JButton btnMesa1;
+    private javax.swing.JButton btnMesa10;
+    private javax.swing.JButton btnMesa11;
+    private javax.swing.JButton btnMesa12;
+    private javax.swing.JButton btnMesa2;
+    private javax.swing.JButton btnMesa3;
+    private javax.swing.JButton btnMesa4;
+    private javax.swing.JButton btnMesa5;
+    private javax.swing.JButton btnMesa6;
+    private javax.swing.JButton btnMesa7;
+    private javax.swing.JButton btnMesa8;
+    private javax.swing.JButton btnMesa9;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel imagenDeFondo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
