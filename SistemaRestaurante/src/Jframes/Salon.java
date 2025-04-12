@@ -31,7 +31,6 @@ public class Salon extends javax.swing.JFrame {
         imagenDeFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(960, 580));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(960, 580));
         jPanel1.setMinimumSize(new java.awt.Dimension(960, 580));
@@ -43,7 +42,7 @@ public class Salon extends javax.swing.JFrame {
         jPanel1.add(titulo);
         titulo.setBounds(0, 0, 96, 47);
 
-        imagenDeFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/imagenDelSalon.jpg"))); // NOI18N
+        imagenDeFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/icono3.jpg"))); // NOI18N
         imagenDeFondo.setMaximumSize(new java.awt.Dimension(960, 580));
         imagenDeFondo.setMinimumSize(new java.awt.Dimension(960, 580));
         imagenDeFondo.setPreferredSize(new java.awt.Dimension(960, 580));
