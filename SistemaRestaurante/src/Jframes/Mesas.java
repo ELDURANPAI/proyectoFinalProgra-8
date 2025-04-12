@@ -102,6 +102,7 @@ public class Mesas extends javax.swing.JFrame {
         btnGuardarDatos = new javax.swing.JButton();
         btnAgregarFila = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
+        btnVerSalon = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         mesas = new javax.swing.JTable();
 
@@ -136,6 +137,14 @@ public class Mesas extends javax.swing.JFrame {
             }
         });
 
+        btnVerSalon.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnVerSalon.setText("Ver salon");
+        btnVerSalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerSalonActionPerformed(evt);
+            }
+        });
+
         mesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
@@ -163,7 +172,8 @@ public class Mesas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -181,7 +191,9 @@ public class Mesas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnVerSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
                         .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(btnGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,6 +227,13 @@ public class Mesas extends javax.swing.JFrame {
         // Agregar la fila al modelo
         modelo.addRow(filaVacia);
     }//GEN-LAST:event_btnAgregarFilaActionPerformed
+
+    private void btnVerSalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSalonActionPerformed
+        Salon abrirSalon = new Salon();
+        abrirSalon.setVisible(true);
+        abrirSalon.setLocationRelativeTo(null);
+        this.dispose(); 
+    }//GEN-LAST:event_btnVerSalonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,6 +277,7 @@ public class Mesas extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarFila;
     private javax.swing.JButton btnGuardarDatos;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnVerSalon;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable mesas;
     // End of variables declaration//GEN-END:variables

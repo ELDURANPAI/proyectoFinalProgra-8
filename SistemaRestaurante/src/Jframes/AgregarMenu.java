@@ -12,7 +12,7 @@ import sistemarestaurante.ConexionBD;
 
 /**
  *
- * @author Harry Orozco
+ * @author Harry Orozco Prueba
  */
 public class AgregarMenu extends javax.swing.JFrame {
 
