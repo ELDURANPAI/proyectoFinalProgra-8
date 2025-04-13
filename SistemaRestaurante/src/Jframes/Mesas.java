@@ -102,9 +102,9 @@ public class Mesas extends javax.swing.JFrame {
         btnGuardarDatos = new javax.swing.JButton();
         btnAgregarFila = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        btnVerSalon = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         mesas = new javax.swing.JTable();
+        btnVerSalon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -137,14 +137,6 @@ public class Mesas extends javax.swing.JFrame {
             }
         });
 
-        btnVerSalon.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnVerSalon.setText("Ver salon");
-        btnVerSalon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerSalonActionPerformed(evt);
-            }
-        });
-
         mesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
@@ -162,6 +154,14 @@ public class Mesas extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(mesas);
+
+        btnVerSalon.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnVerSalon.setText("Ver salon");
+        btnVerSalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerSalonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
