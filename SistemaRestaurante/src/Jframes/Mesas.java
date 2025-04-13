@@ -98,16 +98,24 @@ public class Mesas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnVerSalon = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         btnGuardarDatos = new javax.swing.JButton();
         btnAgregarFila = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        btnVerSalon = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         mesas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        btnVerSalon.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnVerSalon.setText("Ver salon");
+        btnVerSalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerSalonActionPerformed(evt);
+            }
+        });
 
         Titulo.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         Titulo.setLabelFor(this);
@@ -134,14 +142,6 @@ public class Mesas extends javax.swing.JFrame {
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
-            }
-        });
-
-        btnVerSalon.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnVerSalon.setText("Ver salon");
-        btnVerSalon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerSalonActionPerformed(evt);
             }
         });
 

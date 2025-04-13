@@ -51,7 +51,6 @@ public class Salon extends javax.swing.JFrame {
         imagenDeFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(960, 580));
 
         JPanelPrincipal.setMaximumSize(new java.awt.Dimension(960, 580));
         JPanelPrincipal.setMinimumSize(new java.awt.Dimension(960, 580));
@@ -172,7 +171,9 @@ public class Salon extends javax.swing.JFrame {
         JPanelPrincipal.add(JPanelBotones);
         JPanelBotones.setBounds(70, 90, 790, 350);
 
+        titulo.setBackground(new java.awt.Color(255, 255, 255));
         titulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("Salon (Mesas del Restaurante)");
         JPanelPrincipal.add(titulo);
         titulo.setBounds(20, 20, 520, 47);
