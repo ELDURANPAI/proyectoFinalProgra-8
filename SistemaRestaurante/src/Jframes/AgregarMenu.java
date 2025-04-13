@@ -5,26 +5,18 @@ import javax.swing.*;
 import javax.swing.table.*;
 import sistemarestaurante.ConexionBD;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Harry Orozco Prueba
- */
 public class AgregarMenu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AgregarMenu
-     */
     
-        public void ConsultarPlatillos() {
+    public AgregarMenu() {
+        initComponents();
+        ConsultarPlatillos();  
+    }
+    
+    public void ConsultarPlatillos() {
         ConexionBD conexion = new ConexionBD();
         ResultSet resultado = null;
         DefaultTableModel md = new DefaultTableModel();
-        md.setColumnIdentifiers(new Object[]{"Nombre", "Tipo", "Vasos", "Precio"});
+        md.setColumnIdentifiers(new Object[]{"Nombre", "Tipo", "Precio"});
         try {
             //Abrir conexion
             conexion.setConexion();
@@ -35,14 +27,12 @@ public class AgregarMenu extends javax.swing.JFrame {
             while (resultado.next()) {
                 String tipo = resultado.getString("tipo");
                 String precio = resultado.getString("precio");
-                String vasos = resultado.getString("vasos");
                 String nombre = resultado.getString("nombre");
 
                 md.addRow(new Object[]{
                     resultado.getString("nombre"),
                     resultado.getString("tipo"),
-                    resultado.getString("precio"),
-                    resultado.getString("vasos")});
+                    resultado.getString("precio")});
                 platillos1.setModel(md);
             }
             conexion.cerrarConexion();
@@ -73,76 +63,56 @@ public class AgregarMenu extends javax.swing.JFrame {
 
     }
 
-    public void agregarDatos() {
-    ConexionBD conexion = new ConexionBD();
-    ResultSet resultado = null;
-    DefaultTableModel modelo = (DefaultTableModel) platillos1.getModel(); 
-    int filas = modelo.getRowCount();
-    try {
-        conexion.setConexion();
-        conexion.setConsulta("INSERT INTO menu(nombre, tipo, precio, vasos) VALUES (?, ?, ?, ?)");
-        for (int i = 0; i < filas; i++) {
-            conexion.getConsulta().setString(1, String.valueOf(modelo.getValueAt(i, 0))); 
-            conexion.getConsulta().setString(2, String.valueOf(modelo.getValueAt(i, 1))); 
-            conexion.getConsulta().setString(3, String.valueOf(modelo.getValueAt(i, 3)));
-            conexion.getConsulta().setString(4, String.valueOf(modelo.getValueAt(i, 2))); 
-            conexion.getConsulta().executeUpdate();
-        }
-        JOptionPane.showMessageDialog(this, "Datos guardados en la base de datos correctamente.");
-        conexion.cerrarConexion();
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al guardar en base de datos: " + e.getMessage());
-    }
-}
-    public String toString() {
+    public boolean agregarDatos() {
+        ConexionBD conexion = new ConexionBD();
         DefaultTableModel modelo = (DefaultTableModel) platillos1.getModel();
         int filas = modelo.getRowCount();
-        String resultado = "Factura:\n";
-        int contadorVasos = 0;
-        resultado += "Numero de vasos agregados: ";
-        for (int i = 0; i < filas; i++) {
-            try {
-                int vasos = Integer.parseInt(String.valueOf(modelo.getValueAt(i, 2)));
-                contadorVasos += vasos;
-            } catch (NumberFormatException e) {
-            }
-        }
-        resultado += contadorVasos + "\n";
-        resultado += "Lista de vasos: ";
-        for (int i = 0; i < filas; i++) {
-            String vasosS = String.valueOf(modelo.getValueAt(i, 2));
-            resultado += vasosS;
-            if (i < filas - 1) {
-                resultado += ", ";
-            }
-        }
-        resultado += "\n\nNumero de platillos agregados: " + filas + "\n";
-        resultado += "Lista de platillos:\n";
-        for (int i = 0; i < filas; i++) {
-            String nombre = String.valueOf(modelo.getValueAt(i, 0));
-            String tipo = String.valueOf(modelo.getValueAt(i, 1));
-            String precio = String.valueOf(modelo.getValueAt(i, 3));
-            resultado += (i + 1) + ") ";
-            resultado += "Nombre: " + nombre + "";
-            resultado += "Tipo: " + tipo + "";
-            resultado += "Precio: " + precio + "\n";
-        }
 
-        return resultado;
-    }
-    
-    public AgregarMenu() {
-        initComponents();
-        ConsultarPlatillos();
-        
+        try {
+            conexion.setConexion();
+            conexion.setConsulta("INSERT INTO menu(nombre, tipo, precio) VALUES (?, ?, ?)");
+
+            for (int i = 0; i < filas; i++) {
+                String nombre = String.valueOf(modelo.getValueAt(i, 0)).trim();
+                String tipo = String.valueOf(modelo.getValueAt(i, 1)).trim();
+                String precioStr = String.valueOf(modelo.getValueAt(i, 2)).trim();
+
+                if (nombre.isEmpty() || tipo.isEmpty() || precioStr.isEmpty()) {
+                    JOptionPane.showMessageDialog(this,
+                            "Faltan datos en la fila " + (i + 1),
+                            "Error de validación",
+                            JOptionPane.ERROR_MESSAGE);
+                    conexion.cerrarConexion();
+                    return false;
+                }
+
+                try {
+                    double precio = Double.parseDouble(precioStr);
+                    if (precio <= 0) throw new NumberFormatException();
+                    conexion.getConsulta().setString(1, nombre);
+                    conexion.getConsulta().setString(2, tipo);
+                    conexion.getConsulta().setDouble(3, precio);
+                    conexion.getConsulta().executeUpdate();
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this,
+                            "El precio en la fila " + (i + 1) + " no es válido.",
+                            "Error de validación",
+                            JOptionPane.ERROR_MESSAGE);
+                    conexion.cerrarConexion();
+                    return false;
+                }
+            }
+
+            conexion.cerrarConexion();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error SQL: " + e.getMessage());
+            return false;
+        }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,9 +122,10 @@ public class AgregarMenu extends javax.swing.JFrame {
         Titulo = new javax.swing.JLabel();
         btnAgregarFila = new javax.swing.JButton();
         btnGuardarDatos = new javax.swing.JButton();
-        btnRegresar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         platillos1 = new javax.swing.JTable();
+        btnEliminarPlatillo = new javax.swing.JButton();
 
         mesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,31 +159,31 @@ public class AgregarMenu extends javax.swing.JFrame {
         });
 
         btnGuardarDatos.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnGuardarDatos.setText("Guardar Datos");
+        btnGuardarDatos.setText("Guardar Platillo");
         btnGuardarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarDatosActionPerformed(evt);
             }
         });
 
-        btnRegresar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnRegresar.setText("Regresar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
         platillos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null}
             },
             new String [] {
-                "Nombre", "Tipo", "Vasos", "Precio"
+                "Nombre", "Tipo", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -220,6 +191,14 @@ public class AgregarMenu extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(platillos1);
+
+        btnEliminarPlatillo.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnEliminarPlatillo.setText("Eliminar Platillo");
+        btnEliminarPlatillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPlatilloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,9 +211,10 @@ public class AgregarMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -246,16 +226,19 @@ public class AgregarMenu extends javax.swing.JFrame {
                 .addComponent(Titulo)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnEliminarPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123))))
         );
 
         pack();
@@ -272,18 +255,77 @@ public class AgregarMenu extends javax.swing.JFrame {
         modelo.addRow(filaVacia);
     }//GEN-LAST:event_btnAgregarFilaActionPerformed
 
+    public String generarResumenFactura() {
+        DefaultTableModel modelo = (DefaultTableModel) platillos1.getModel();
+        int filas = modelo.getRowCount();
+        StringBuilder resultado = new StringBuilder("Menu:\n\n");
+
+        resultado.append("Platillos agregados: ").append(filas).append("\n\n");
+
+        for (int i = 0; i < filas; i++) {
+            String nombre = String.valueOf(modelo.getValueAt(i, 0));
+            String tipo = String.valueOf(modelo.getValueAt(i, 1));
+            String precio = String.valueOf(modelo.getValueAt(i, 2));
+
+            resultado.append((i + 1)).append(") ");
+            resultado.append("Nombre: ").append(nombre).append(" | ");
+            resultado.append("Tipo: ").append(tipo).append(" | ");
+            resultado.append("Precio: ").append(precio).append("₡\n");
+        }
+
+        return resultado.toString();
+    }
+    
     private void btnGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDatosActionPerformed
         eliminarDatos();
-        agregarDatos();
-        JOptionPane.showMessageDialog(null, toString(), "Factura", JOptionPane.INFORMATION_MESSAGE);
+        boolean exito = agregarDatos();
+        
+        if(exito){
+            JOptionPane.showMessageDialog(this, generarResumenFactura(), "Factura", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnGuardarDatosActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         Menu abrir = new Menu();
         abrir.setVisible(true);
         abrir.setLocationRelativeTo(null);
         dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnEliminarPlatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPlatilloActionPerformed
+        int filaSeleccionada = platillos1.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un platillo para eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String nombrePlatillo = String.valueOf(platillos1.getValueAt(filaSeleccionada, 0));
+
+        int confirmacion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el platillo \"" + nombrePlatillo + "\"?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            ConexionBD conexion = new ConexionBD();
+            try {
+                conexion.setConexion();
+                conexion.setConsulta("DELETE FROM menu WHERE nombre = ?");
+                conexion.getConsulta().setString(1, nombrePlatillo);
+                int filasAfectadas = conexion.getConsulta().executeUpdate();
+                conexion.cerrarConexion();
+
+                if (filasAfectadas > 0) {
+                    DefaultTableModel modelo = (DefaultTableModel) platillos1.getModel();
+                    modelo.removeRow(filaSeleccionada);
+                    JOptionPane.showMessageDialog(this, "Platillo eliminado correctamente.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el platillo de la base de datos.");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al eliminar el platillo: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnEliminarPlatilloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,8 +365,9 @@ public class AgregarMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton btnAgregarFila;
+    private javax.swing.JButton btnEliminarPlatillo;
     private javax.swing.JButton btnGuardarDatos;
-    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable mesas;

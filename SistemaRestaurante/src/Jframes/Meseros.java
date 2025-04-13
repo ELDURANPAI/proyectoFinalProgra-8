@@ -184,11 +184,31 @@ public class Meseros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        String nombre = txtNombre.getText();// guardamos el nombre
-        String cedula = txtCedula.getText(); // guardamos la cedula
+        String nombre = txtNombre.getText().trim();
+        String cedula = txtCedula.getText().trim();
+
+        // Validación de campos vacíos
+        if (nombre.isEmpty() || cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar ambos campos: nombre y cédula.", "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación de nombre (solo letras y espacios)
+        if (!nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+            JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras.", "Nombre inválido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación de cédula (números y guiones)
+        if (!cedula.matches("^[0-9\\-]+$")) {
+            JOptionPane.showMessageDialog(this, "La cédula solo debe contener números y guiones.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si pasa todas las validaciones, se guarda el mesero
         c.AgregarMesero(nombre, cedula);
-        ConsultarMeseros();// actualiza la lista
-        // Vaciamos los cuadros de texto
+        ConsultarMeseros(); // Actualiza la lista
+
         txtNombre.setText("");
         txtCedula.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed

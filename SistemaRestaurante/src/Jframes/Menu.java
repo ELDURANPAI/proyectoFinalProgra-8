@@ -27,13 +27,11 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnMeseros = new javax.swing.JButton();
-        btnMesas = new javax.swing.JButton();
+        btnSalon = new javax.swing.JButton();
+        btnPlatillos = new javax.swing.JButton();
+        btnMeseros3 = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
-        btnMesas1 = new javax.swing.JButton();
-        btnMesas2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu de Opciones");
@@ -43,21 +41,29 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnMeseros.setText("Personal Mesero");
-        btnMeseros.addActionListener(new java.awt.event.ActionListener() {
+        btnSalon.setText("Salon");
+        btnSalon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMeserosActionPerformed(evt);
+                btnSalonActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 310, 40));
+        jPanel1.add(btnSalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 310, 40));
 
-        btnMesas.setText("Mesas");
-        btnMesas.addActionListener(new java.awt.event.ActionListener() {
+        btnPlatillos.setText("Platillos");
+        btnPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesasActionPerformed(evt);
+                btnPlatillosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 310, 40));
+        jPanel1.add(btnPlatillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 310, 40));
+
+        btnMeseros3.setText("Personal Mesero");
+        btnMeseros3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMeseros3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMeseros3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 310, 40));
 
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -65,29 +71,10 @@ public class Menu extends javax.swing.JFrame {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 310, 40));
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 310, 40));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/icono1.jpg"))); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 960, 580));
-
-        btnMesas1.setText("Mesas");
-        btnMesas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesas1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMesas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 310, 40));
-
-        btnMesas2.setText("Mesas");
-        btnMesas2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesas2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMesas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 310, 40));
-
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 370, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,21 +90,12 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeserosActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        Meseros m = new Meseros();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-    }//GEN-LAST:event_btnMeserosActionPerformed
-
-    private void btnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesasActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        Mesas x = new Mesas();
-        x.setLocationRelativeTo(null);
-        x.setVisible(true);
-    }//GEN-LAST:event_btnMesasActionPerformed
+    private void btnSalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalonActionPerformed
+        Salon abrirSalon = new Salon();
+        abrirSalon.setVisible(true);
+        abrirSalon.setLocationRelativeTo(null);
+        this.dispose(); 
+    }//GEN-LAST:event_btnSalonActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         // TODO add your handling code here:
@@ -127,13 +105,19 @@ public class Menu extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
-    private void btnMesas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesas1ActionPerformed
+    private void btnMeseros3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeseros3ActionPerformed
+        Meseros volverMeseros = new Meseros();
+        volverMeseros.setVisible(true);
+        volverMeseros.setLocationRelativeTo(null);
+        this.dispose();   
+    }//GEN-LAST:event_btnMeseros3ActionPerformed
 
-    private void btnMesas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesas2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesas2ActionPerformed
+    private void btnPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatillosActionPerformed
+        AgregarMenu abrirAgregarMenu = new AgregarMenu();
+        abrirAgregarMenu.setVisible(true);
+        abrirAgregarMenu.setLocationRelativeTo(null);
+        this.dispose(); 
+    }//GEN-LAST:event_btnPlatillosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,12 +156,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnMesas;
-    private javax.swing.JButton btnMesas1;
-    private javax.swing.JButton btnMesas2;
-    private javax.swing.JButton btnMeseros;
+    private javax.swing.JButton btnMeseros3;
+    private javax.swing.JButton btnPlatillos;
+    private javax.swing.JButton btnSalon;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
